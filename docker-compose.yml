@@ -2,8 +2,9 @@ services:
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
     restart: unless-stopped
+    env_file:
+      - ./cloudflare.env   # <-- Clearly points to your new .env file
     environment:
-      - API_KEY=PMvVkVHx98XDVGVx5Wq5caQtKH5Sb3S3VqYLZBta
       - ZONE=qompass.ai
       - RRTYPE=AAAA
       - SUBDOMAIN=@
@@ -14,8 +15,8 @@ services:
     container_name: nginx
     restart: unless-stopped
     ports:
-      - "8080:80"
-      - "8443:443"
+      - "80:80"
+      - "443:443"
     depends_on:
       - land
     volumes:
