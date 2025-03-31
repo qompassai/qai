@@ -19,10 +19,10 @@ services:
     depends_on:
       - land
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - /etc/nginx/qompass.ai:/etc/nginx/qompass.ai:ro # Mount certificates as read-only for rootless Docker.
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/qompass.ai:ro
     networks:
-      quantum-net:
+      - quantum-net
 
   cloudflared:
     build: ./cloudflared
@@ -32,28 +32,28 @@ services:
       - nginx
     volumes:
       - /home/phaedrus/.cloudflared:/home/phaedrus/.cloudflared
-      - /home/phaedrus/.cloudflared/config.yml:/etc/cloudflared/config.yml:ro # Mount config as read-only.
+      - /home/phaedrus/.cloudflared/config.yml:/etc/cloudflared/config.yml:ro
     environment:
       - TUNNEL_ORIGIN_CERT=/home/phaedrus/.cloudflared/cert.pem
     command: cloudflared tunnel run qompass
     networks:
-      quantum-net:
+      - quantum-net
 
   land:
     build: ./land
     container_name: land
     restart: unless-stopped
     environment:
-      - OQS_PROVIDER=openssl # Enable OpenSSL for PQ cryptography.
-      - SSL_CIPHERS=KYBER-768:ECDHE-ECDSA-AES256-GCM-SHA384 # PQ and standard ciphers.
-      - NODE_ENV=production # Set production environment for Next.js or Node.js app.
+      - OQS_PROVIDER=openssl
+      - SSL_CIPHERS=KYBER-768:ECDHE-ECDSA-AES256-GCM-SHA384
+      - NODE_ENV=production
     expose:
-      - "3000" # Expose port 3000 internally for Nginx proxying.
+      - "3000"
     networks:
-      quantum-net:
+      - quantum-net
 
 networks:
   quantum-net:
-    driver: bridge # Use Docker's default bridge networking for IPv4 and IPv6 traffic.
-    enable_ipv6: true # Enable dual-stack support.
+    driver: bridge
+    enable_ipv6: true
 
