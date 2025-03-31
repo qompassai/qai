@@ -9,6 +9,25 @@ services:
       - RRTYPE=AAAA
       - SUBDOMAIN=@
       - PROXIED=true
+  
+  #rose:
+   # build: ./rose  # Adjust this path if necessary
+    #container_name: rose
+    #image: rose:latest
+    #restart: unless-stopped
+    #ports:
+     # - "11434:11434"  # Adjust if needed; this is where it will be exposed
+    #volumes:
+     # - ./rose:/app  # Adjust based on where your `rose` files are
+    #environment:
+    #  - ROSE_ENV=production
+    #  - ROSE_HOST=0.0.0.0:11434
+    #  - ROSE_CONFIG_PATH=/app/config
+    #  - ROSE_MODEL_PATH=/app/models
+    #  - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    #runtime: nvidia
+    networks:
+      - quantum-net
 
   nginx:
     build: ./nginx
@@ -19,6 +38,7 @@ services:
       - "443:443"
     depends_on:
       - land
+      #- rose
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./certs:/etc/nginx/qompass.ai:ro
