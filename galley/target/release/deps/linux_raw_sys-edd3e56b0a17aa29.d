@@ -1,0 +1,11 @@
+/home/phaedrus/.GH/xet-core/target/release/deps/liblinux_raw_sys-edd3e56b0a17aa29.rmeta: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/elf.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/errno.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/general.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/ioctl.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/liblinux_raw_sys-edd3e56b0a17aa29.rlib: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/elf.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/errno.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/general.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/ioctl.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/linux_raw_sys-edd3e56b0a17aa29.d: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/elf.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/errno.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/general.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/ioctl.rs
+
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/lib.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/elf.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/errno.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/general.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/linux-raw-sys-0.9.3/src/x86_64/ioctl.rs:

@@ -1,0 +1,120 @@
+[package]
+name = "land"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+readme = "README.md"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+
+[dependencies]
+console_error_panic_hook = { version = "0.1.7", optional = true }
+console_log = "1.0.0"
+imp = "0.1.0"
+js-sys = "0.3.77"
+leptos = { version = "0.7.8", features = [
+  "csr",
+  "nightly",
+  "hydrate",
+  "nonce",
+  "trace-component-props",
+] }
+leptos_icons = "0.5.0"
+leptos_meta = { version = "0.7.8", features = ["nonce", "ssr", "tracing"] }
+leptos_router = { version = "0.7.8", features = ["nightly", "ssr", "tracing"] }
+log = "0.4.20"
+serde = "1.0.219"
+tailwind_fuse = "0.3.2"
+wasm-bindgen = { version = "0.2.100", features = [
+  "serde-serialize",
+  "serde_json",
+  "spans",
+] }
+wasm-bindgen-futures = { version = "0.4.50", features = [
+  "futures-core",
+  "futures-core-03-stream",
+] }
+web-sys = { version = "0.3.77", features = [
+  "Clipboard",
+  "ClipboardEvent",
+  "Crypto",
+  "CryptoKey",
+  "Document",
+  "EventTarget",
+  "HtmlElement",
+  "Navigator",
+  "Window",
+] }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+argon2 = "0.5.3"
+bollard = "0.18.1"
+burn-cuda = "0.16.1"
+cuda_std_macros = "0.2.0"
+cudarc = { version = "0.16.0", features = [
+  "cuda-12080",
+  "cudnn",
+  "nccl",
+  "f16",
+] }
+glib = { version = "0.20.9", default-features = false }
+imp = "0.1.0"
+mio = "1.0.3" # Upgrade if you really need it
+openssl = { version = "0.10.72", features = ["vendored"] }
+oqs = { version = "0.10.1", features = ["vendored", "ntruprime"] }
+oqs-sys = { version = "0.10.1+liboqs-0.12.0", features = ["vendored"] }
+procinfo = "0.4.2"
+ring = "0.17.14"
+rmcp = "0.1.5"
+rust-mcp-schema = { version = "0.3.0", features = [
+  "default",
+  "latest",
+  "2025_03_26",
+] }
+rust-mcp-sdk = { version = "0.2.0", features = ["default", "rust-mcp-macros"] }
+rust-mcp-transport = "0.2.0"
+rustix = "1.0.5"
+tauri = { version = "2.4.1", features = [
+  "custom-protocol",
+  "http-range",
+  "rustls-tls",
+  "config-toml",
+  "devtools",
+  "tracing",
+  "tray-icon",
+  "isolation",
+] }
+tokio = { version = "1.44.2", features = ["full"] }
+tree-sitter-zig = "1.1.2"
+
+[dev-dependencies]
+cargo-audit = "0.21.2"
+cargo-deny = "0.18.2"
+
+[features]
+default = []
+console_error_panic_hook = ["dep:console_error_panic_hook"]
+
+[target.'cfg(target_os = "macos")'.dependencies]
+cocoa = "0.26.0"
+
+[target.wasm32-unknown-unknown]
+
+[target.'cfg(target_os = "windows")'.dependencies]
+winapi = { version = "0.3", features = ["winuser"] }
+
+
+[package.metadata.leptos]
+assets-dir = "public"
+bin-package = "land-leptos"
+env = "DEV"
+leptos-hot-reload = true
+lib-package = "land-leptos"
+output-name = "land-leptos"
+reload-port = 3001
+site-addr = "127.0.0.1:3000"
+site-pkg-dir = "pkg"
+site-root = "target/site"
+style-file = "style/main.css"

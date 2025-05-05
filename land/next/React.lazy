@@ -1,2 +1,0 @@
-const LazyComponent = dynamic(() => import('../components/LazyComponent'));
-

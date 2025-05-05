@@ -2,46 +2,53 @@ services:
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
     restart: unless-stopped
-    env_file:
-      - ./cloudflare.env   # <-- Clearly points to your new .env file
+    env_file: .env
     environment:
       - ZONE=qompass.ai
       - RRTYPE=AAAA
       - SUBDOMAIN=@
       - PROXIED=true
-  
-  #rose:
-   # build: ./rose  # Adjust this path if necessary
-    #container_name: rose
-    #image: rose:latest
-    #restart: unless-stopped
-    #ports:
-     # - "11434:11434"  # Adjust if needed; this is where it will be exposed
-    #volumes:
-     # - ./rose:/app  # Adjust based on where your `rose` files are
-    #environment:
-    #  - ROSE_ENV=production
-    #  - ROSE_HOST=0.0.0.0:11434
-    #  - ROSE_CONFIG_PATH=/app/config
-    #  - ROSE_MODEL_PATH=/app/models
-    #  - NVIDIA_DRIVER_CAPABILITIES=compute,utility
-    #runtime: nvidia
     networks:
       - quantum-net
 
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    restart: unless-stopped
+  registry:
+    image: registry:2
+    container_name: harbor
+    restart: always
     ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - land
-      #- rose
+      - "5000:5000"
+    environment:
+      REGISTRY_AUTH: htpasswd
+      REGISTRY_AUTH_HTPASSWD_REALM: Harbor-Registry
+      REGISTRY_AUTH_HTPASSWD_PATH: /auth/registry.passwd
+      REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: /var/lib/registry
+      REGISTRY_HTTP_HOST: harbor.qompass.ai
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+      REGISTRY_STORAGE_CACHE_BLOBDESCRIPTOR: "inmemory"
+      REGISTRY_STORAGE_MAINTENANCE_READONLY: "false"
+      REGISTRY_HTTP_HEADERS_X-Content-Type-Options: "[nosniff]"
+      REGISTRY_STORAGE_CACHE_ENABLED: "true"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certs:/etc/nginx/qompass.ai:ro
+      - registry-data:/var/lib/registry
+      - ./auth:/auth
+      - ./model-storage:/var/lib/registry/models
+    networks:
+      - quantum-net
+    labels:
+      - "com.qompass.description=Docker Registry for Qompass AI"
+
+  forgejo:
+    image: forgejo/forgejo:latest
+    container_name: forgejo
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - FORGEJO__server__ROOT_URL=https://git.qompass.ai/
+    volumes:
+      - ./forgejo:/data
+    expose:
+      - "3000"
     networks:
       - quantum-net
 
@@ -64,6 +71,7 @@ services:
     build: ./land
     container_name: land
     restart: unless-stopped
+    env_file: .env
     environment:
       - OQS_PROVIDER=openssl
       - SSL_CIPHERS=KYBER-768:ECDHE-ECDSA-AES256-GCM-SHA384
@@ -73,8 +81,132 @@ services:
     networks:
       - quantum-net
 
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: unless-stopped
+    depends_on:
+      - land
+      - registry
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/qompass.ai:ro
+    networks:
+      - quantum-net
+
+  rose:
+    build: ./rose
+    container_name: rose
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./rose:/app
+      - ./rose/models:/app/models
+      - ./rose/config:/app/config
+      - ./rose/releases:/app/releases
+    environment:
+      - ROSE_ENV=production
+      - ROSE_HOST=0.0.0.0:11434
+      - ROSE_CONFIG_PATH=/app/config
+      - ROSE_MODEL_PATH=/app/models
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    runtime: nvidia
+    networks:
+      - quantum-net
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=anchor1
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - quantum-net
+
+  sojourn:
+    build:
+      context: ./sojourn
+      dockerfile: Dockerfile
+      args:
+        USE_CUDA: "true"
+        USE_ROSE: "true"
+        USE_CUDA_VER: "cu126"
+        USE_EMBEDDING_MODEL: "sentence-transformers/all-MiniLM-L6-v2"
+        USE_RERANKING_MODEL: "intfloat/multilingual-e5-base"
+        BUILD_HASH: "custom-webui"
+    container_name: sojourn
+    restart: unless-stopped
+    env_file: .env
+    secrets:
+      - qui_secret_key
+    environment:
+      - ROSE_BASE_URL=http://rose:11434
+      - WEBUI_SECRET_KEY=/run/secrets/qui_secret_key
+    volumes:
+      - sojourn-data:/app/backend/data
+    expose:
+      - "8080"
+    depends_on:
+      - rose
+      - nginx
+    runtime: nvidia
+    networks:
+      - quantum-net
+
+  galley:
+    image: xetdata/xet-core:latest
+    container_name: galley
+    restart: unless-stopped
+    environment:
+      - XET_CORE_CONFIG_PATH=/etc/xet/config.yaml
+    volumes:
+      - ./galley/config.yaml:/etc/xet/config.yaml:ro
+      - galley-data:/data
+    expose:
+      - "8888"
+    networks:
+      - quantum-net
+
+  ahoy:
+    build: ./ahoy
+    container_name: ahoy
+    restart: unless-stopped
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/anchor1
+      - DB_USER=postgres
+      - DB_PASSWORD=yourpassword
+      - AHOY_SECRET=supersecretkey
+    depends_on:
+      - postgres
+    expose:
+      - "9000"
+    networks:
+      - quantum-net
+
+secrets:
+  qui_secret_key:
+    file: "/run/user/1000/secrets/qui_secret_key"
+
 networks:
   quantum-net:
     driver: bridge
     enable_ipv6: true
+
+volumes:
+  registry-data:
+  rose-data:
+  sojourn-data:
+  postgres-data:
+  galley-data:
 

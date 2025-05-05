@@ -1,0 +1,42 @@
+use leptos::*;
+
+#[component]
+fn RoseDownload() -> impl IntoView {
+    // Include CSS (typically in your main component or app.rs)
+    let style_str = include_str!("../styles/rosedownload.css");
+    
+    view! {
+        <style>{style_str}</style>
+        
+        <div class="rose-download-container">
+            <div class="rose-download-header">
+                <img src="/path/to/rose-logo.svg" class="rose-logo" alt="Rose Logo"/>
+                <h1>Rose Downloads</h1>
+            </div>
+            
+            <div class="detection-info">
+                <p>System detection information here...</p>
+            </div>
+            
+            <div class="selector-group">
+                <label>Select Option</label>
+                <select class="selector">
+                    <option>Option 1</option>
+                </select>
+            </div>
+            
+            <div class="download-buttons">
+                <a href="#" class="download-button">
+                    Download Rose
+                </a>
+            </div>
+            
+            <div class="installation-guide">
+                <h3>Installation Guide</h3>
+                <pre>{"Installation commands here..."}</pre>
+                <button class="copy-button">Copy Command</button>
+            </div>
+        </div>
+    }
+}
+

@@ -1,0 +1,8 @@
+site_root = "target/site"
+site_pkg_dir = "pkg"
+style_file = "src/styles/main.css"
+assets_dir = "public"
+site_addr = "127.0.0.1:3000"
+reload_port = 3001
+watch = false
+

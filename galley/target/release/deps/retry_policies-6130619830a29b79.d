@@ -1,0 +1,10 @@
+/home/phaedrus/.GH/xet-core/target/release/deps/libretry_policies-6130619830a29b79.rmeta: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/exponential_backoff.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/retry_policy.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/libretry_policies-6130619830a29b79.rlib: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/exponential_backoff.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/retry_policy.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/retry_policies-6130619830a29b79.d: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/exponential_backoff.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/retry_policy.rs
+
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/lib.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/mod.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/policies/exponential_backoff.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/retry-policies-0.4.0/src/retry_policy.rs:
