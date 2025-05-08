@@ -1783,9 +1783,9 @@ dependencies = [
 
 [[package]]
 name = "cudarc"
-version = "0.15.1"
+version = "0.16.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "547fbfa56792e073e3368051016a6f3619462be4715e67855d4d07eec4176570"
+checksum = "fc824dfce2bb28c9dccb37a77352791643ed971f0dc60afbd7934b0a689c88a2"
 dependencies = [
  "half",
  "libloading 0.8.6",
@@ -4557,7 +4557,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "land-leptos"
+name = "land"
 version = "0.1.0"
 dependencies = [
  "argon2",
@@ -4569,7 +4569,7 @@ dependencies = [
  "console_error_panic_hook",
  "console_log",
  "cuda_std_macros",
- "cudarc 0.15.1",
+ "cudarc 0.16.3",
  "glib 0.20.9",
  "imp",
  "js-sys",
@@ -4578,14 +4578,14 @@ dependencies = [
  "leptos_meta",
  "leptos_router",
  "log",
- "mio 0.8.11",
+ "mio",
  "openssl",
  "oqs",
  "oqs-sys",
  "procinfo",
  "ring",
  "rmcp",
- "rust-mcp-schema",
+ "rust-mcp-schema 0.3.0",
  "rust-mcp-sdk",
  "rust-mcp-transport",
  "rustix 1.0.5",
@@ -5082,23 +5082,12 @@ dependencies = [
 
 [[package]]
 name = "mio"
-version = "0.8.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a4a650543ca06a924e8b371db273b2756685faae30f8487da1b56505a8f78b0c"
-dependencies = [
- "libc",
- "log",
- "wasi 0.11.0+wasi-snapshot-preview1",
- "windows-sys 0.48.0",
-]
-
-[[package]]
-name = "mio"
 version = "1.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2886843bf800fba2e3377cff24abf6379b4c4d5c6681eaf9ea5b0d15090450bd"
 dependencies = [
  "libc",
+ "log",
  "wasi 0.11.0+wasi-snapshot-preview1",
  "windows-sys 0.52.0",
 ]
@@ -6711,9 +6700,9 @@ dependencies = [
 
 [[package]]
 name = "rust-mcp-macros"
-version = "0.1.2"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8e130baeaba758b825eb2374caf8c628fc4ac05e5d4ba7b59315e1a665662f64"
+checksum = "46f7a75e2d2a87e62815e6c8f2b0657c8b7a89d059263e44a3ef90e1065793f5"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6733,15 +6722,25 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-mcp-sdk"
-version = "0.1.3"
+name = "rust-mcp-schema"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6df71d7ed581da263fa603a69902dbe83cfac31edfd0b5fc71d25adaea7f2cbb"
+checksum = "868d31d0ae0376ba45786eac9058771da06839e83bb961ac7e5997ab3910f086"
+dependencies = [
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "rust-mcp-sdk"
+version = "0.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d0948d498301f9b26e20b4b0a3a82493e18edc98270d05e47cfa0b33cbd1ed1f"
 dependencies = [
  "async-trait",
  "futures",
  "rust-mcp-macros",
- "rust-mcp-schema",
+ "rust-mcp-schema 0.4.0",
  "rust-mcp-transport",
  "serde",
  "serde_json",
@@ -6751,13 +6750,13 @@ dependencies = [
 
 [[package]]
 name = "rust-mcp-transport"
-version = "0.1.2"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7da10bdbdda9452e2e08c7a9edd0295d4ec1648ace5d6a43734012dc7080decb"
+checksum = "0f1ec45715ca770c07ecf083d6c8b662362f4b655c5936d5506e55e98473eb6e"
 dependencies = [
  "async-trait",
  "futures",
- "rust-mcp-schema",
+ "rust-mcp-schema 0.4.0",
  "serde",
  "serde_json",
  "thiserror 2.0.12",
@@ -8244,7 +8243,7 @@ dependencies = [
  "backtrace",
  "bytes",
  "libc",
- "mio 1.0.3",
+ "mio",
  "parking_lot",
  "pin-project-lite",
  "signal-hook-registry",
