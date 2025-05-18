@@ -134,9 +134,9 @@ services:
     networks:
       - quantum-net
 
-  sojourn:
+  roseui:
     build:
-      context: ./sojourn
+      context: ./roseui
       dockerfile: Dockerfile
       args:
         USE_CUDA: "true"
@@ -145,7 +145,7 @@ services:
         USE_EMBEDDING_MODEL: "sentence-transformers/all-MiniLM-L6-v2"
         USE_RERANKING_MODEL: "intfloat/multilingual-e5-base"
         BUILD_HASH: "custom-webui"
-    container_name: sojourn
+    container_name: roseui
     restart: unless-stopped
     env_file: .env
     secrets:
@@ -154,7 +154,7 @@ services:
       - ROSE_BASE_URL=http://rose:11434
       - WEBUI_SECRET_KEY=/run/secrets/qui_secret_key
     volumes:
-      - sojourn-data:/app/backend/data
+      - roseui-data:/app/backend/data
     expose:
       - "8080"
     depends_on:
@@ -206,7 +206,7 @@ networks:
 volumes:
   registry-data:
   rose-data:
-  sojourn-data:
+  roseui-data:
   postgres-data:
   galley-data:
 
