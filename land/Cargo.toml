@@ -1,8 +1,7 @@
 [package]
 name = "land"
 version = "0.1.0"
-edition = "2024"
-license = "MIT"
+edition = "2021"
 readme = "README.md"
 
 [lib]
@@ -61,7 +60,7 @@ cudarc = { version = "0.16.0", features = [
 ] }
 glib = { version = "0.20.9", default-features = false }
 imp = "0.1.0"
-mio = "1.0.3" # Upgrade if you really need it
+mio = "1.0.3"
 openssl = { version = "0.10.72", features = ["vendored"] }
 oqs = { version = "0.10.1", features = ["vendored", "ntruprime"] }
 oqs-sys = { version = "0.10.1+liboqs-0.12.0", features = ["vendored"] }
