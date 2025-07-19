@@ -10,7 +10,6 @@ services:
       - PROXIED=true
     networks:
       - quantum-net
-
   registry:
     image: registry:2
     container_name: harbor

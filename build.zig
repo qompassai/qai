@@ -1,16 +1,17 @@
+// /qompassai/qai/build.zig
+// Qompass AI Site Zig Build
+//
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
     const build_options = b.addOptions();
 
-    // Optional features from CLI
     const cpu_features = b.option(bool, "cpu-specific", "Enable CPU-specific optimizations") orelse false;
     const enable_cuda = b.option(bool, "cuda", "Enable NVIDIA CUDA support") orelse false;
     const enable_intel_gpu = b.option(bool, "intel-gpu", "Enable Intel GPU support") orelse false;
     const enable_quantum_crypto = b.option(bool, "quantum-crypto", "Enable post-quantum cryptography") orelse false;
 
-    // Set flags for conditional C++ or Zig code use
     if (cpu_features) {
         build_options.addOption(bool, "cpu_specific_optimizations", true);
         build_options.addOption(bool, "avx2", true);
@@ -23,7 +24,6 @@ pub fn build(b: *std.Build) void {
     if (enable_intel_gpu) build_options.addOption(bool, "enable_intel_gpu", true);
     if (enable_quantum_crypto) build_options.addOption(bool, "enable_quantum_crypto", true);
 
-    // Generate C config header (optional use in native components)
     const gen_headers = b.addWriteFiles();
     _ = gen_headers.add("build_config.h",
         \\#pragma once
@@ -32,8 +32,6 @@ pub fn build(b: *std.Build) void {
         \\#cmakedefine ENABLE_INTEL_GPU
         \\#cmakedefine ENABLE_QUANTUM_CRYPTO
     );
-
-    // Go build (main entry point is main.go in root)
     const go_tags = blk: {
         var tags = std.ArrayList([]const u8).init(b.allocator);
         if (enable_cuda) tags.append("cuda") catch unreachable;
@@ -61,7 +59,6 @@ pub fn build(b: *std.Build) void {
     if (enable_quantum_crypto) {
         go_build.setEnvironmentVariable("PKG_CONFIG_PATH", "$PKG_CONFIG_PATH:/home/phaedrus/liboqs-go/.config");
 
-        // Run go clean -cache first to refresh pkg-config cache
         const go_clean = b.addSystemCommand(&[_][]const u8{
             "go", "clean", "-cache",
         });
@@ -76,11 +73,9 @@ pub fn build(b: *std.Build) void {
         const verify_step = b.step("verify-liboqs", "Verify liboqs-go installation");
         verify_step.dependOn(&check_liboqs.step);
 
-        // Make other steps depend on verification
         go_build.step.dependOn(&check_liboqs.step);
     }
 
-    // C++ native extensions (optional - will no-op if no CMakeLists.txt is used)
     const cmake_lists_path = ".";
     const build_type_arg = std.fmt.allocPrint(b.allocator, "-DCMAKE_BUILD_TYPE={s}", .{@tagName(optimize)}) catch unreachable;
 
@@ -105,17 +100,13 @@ pub fn build(b: *std.Build) void {
     cpp_make.step.name = "cpp_compile";
     cpp_make.step.dependOn(&cpp_build.step);
 
-    // Main build step
     const build_step = b.step("rose", "Build the Rose backend");
     build_step.dependOn(&gen_headers.step);
     build_step.dependOn(&cpp_make.step);
     build_step.dependOn(&go_build.step);
     b.default_step.dependOn(build_step);
-
-    // Run command step
     const run_cmd = b.addSystemCommand(&[_][]const u8{"./rose"});
     run_cmd.step.dependOn(build_step);
-
     const run_step = b.step("run", "Run the Rose binary");
     run_step.dependOn(&run_cmd.step);
 }
