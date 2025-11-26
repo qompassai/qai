@@ -1,1 +1,0 @@
-/home/phaedrus/.GH/xet-core/target/release/libxet_threadpool.rlib: /home/phaedrus/.GH/xet-core/xet_threadpool/src/errors.rs /home/phaedrus/.GH/xet-core/xet_threadpool/src/lib.rs /home/phaedrus/.GH/xet-core/xet_threadpool/src/threadpool.rs
