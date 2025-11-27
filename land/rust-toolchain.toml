@@ -1,0 +1,9 @@
+[toolchain]
+channel = "nightly"
+targets = [
+    "aarch64-apple-darwin",    # macOS on Apple Silicon
+    "x86_64-apple-darwin",     # macOS on Intel
+    "x86_64-pc-windows-gnu",   # Windows
+    "wasm32-unknown-unknown"   # WebAssembly
+]
+

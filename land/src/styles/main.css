@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles go here */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --primary: #0066cc;
+  --secondary: #6c757d;
+  /* Add more custom properties as needed */
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --foreground: #ffffff;
+    /* Adjust other colors for dark mode */
+  }
+}
+

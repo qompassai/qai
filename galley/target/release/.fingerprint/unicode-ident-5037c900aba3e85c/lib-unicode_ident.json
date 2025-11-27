@@ -1,0 +1,1 @@
+{"rustc":15366373437847970127,"features":"[]","declared_features":"[]","target":5438535436255082082,"profile":4515737090412806701,"path":6022751555673661418,"deps":[],"local":[{"CheckDepInfo":{"dep_info":"release/.fingerprint/unicode-ident-5037c900aba3e85c/dep-lib-unicode_ident","checksum":false}}],"rustflags":["-Zthreads=8"],"config":2069994364910194474,"compile_kind":0}

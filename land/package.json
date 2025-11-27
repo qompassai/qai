@@ -1,0 +1,10 @@
+{
+  "name": "land-leptos",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "cargo leptos watch",
+    "build": "cargo leptos build --release",
+    "start": "./target/server/release/land-leptos"
+  }
+}
+

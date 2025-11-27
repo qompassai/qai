@@ -1,0 +1,12 @@
+.env
+*.env
+/certs/
+cloudflare.env
+node_modules/
+.scripts/
+~/.docker-scripts/
+**/secrets/
+*.pem
+*.key
+*.crt
+/.zig.cache/

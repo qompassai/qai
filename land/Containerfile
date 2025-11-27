@@ -1,0 +1,85 @@
+# ~/.GH/qai/land/Containerfile
+# --------------------------
+# Copyright (C) 2025 Qompass AI, All rights reserved
+
+FROM archlinux:2025.05.01 AS builder
+
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm git gosu base-devel cmake make gcc sudo rust cargo
+
+RUN useradd -m -U -u 1000 builder && \
+    echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    chown -R builder:builder /home/builder
+
+USER builder
+WORKDIR /home/builder
+
+RUN git clone https://aur.archlinux.org/paru-bin.git
+WORKDIR /home/builder/paru-bin
+RUN makepkg --noconfirm
+USER root
+RUN pacman -U --noconfirm /home/builder/paru-bin/paru-bin-*.pkg.tar.zst && \
+    rm -rf /home/builder/paru-bin
+
+USER builder
+WORKDIR /home/builder
+
+RUN paru -S --noconfirm liboqs oqsprovider openssl
+
+RUN rustup target add wasm32-unknown-unknown && \
+    cargo install cargo-leptos && \
+    cargo install --locked trunk
+
+USER root
+
+RUN mkdir -p /etc/ssl/oqs && \
+    echo "openssl_conf = openssl_init" >> /etc/ssl/openssl.cnf && \
+    echo "[openssl_init]" >> /etc/ssl/openssl.cnf && \
+    echo "providers = provider_sect" >> /etc/ssl/openssl.cnf && \
+    echo "[provider_sect]" >> /etc/ssl/openssl.cnf && \
+    echo "default = default_sect" >> /etc/ssl/openssl.cnf && \
+    echo "oqs = oqs_sect" >> /etc/ssl/openssl.cnf && \
+    echo "[default_sect]" >> /etc/ssl/openssl.cnf && \
+    echo "activate = 1" >> /etc/ssl/openssl.cnf && \
+    echo "[oqs_sect]" >> /etc/ssl/openssl.cnf && \
+    echo "activate = 1" >> /etc/ssl/openssl.cnf
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY --chown=builder:builder . .
+
+USER builder
+WORKDIR /app
+
+RUN cargo leptos build --release
+
+FROM archlinux:2025.05.01
+
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm openssl gosu && \
+    pacman -Scc --noconfirm
+
+COPY --from=builder /usr/lib/liboqs.so* /usr/lib/
+COPY --from=builder /etc/ssl/openssl.cnf /etc/ssl/
+COPY --from=builder /usr/lib/ossl-modules/oqsprovider.so /usr/lib/ossl-modules/
+
+RUN mkdir -p /app
+RUN useradd -m -r -U -u 999 appuser && \
+    chown -R appuser:appuser /app
+
+WORKDIR /app
+
+COPY --from=builder --chown=appuser:appuser /app/target/server/release/land /app/
+COPY --from=builder --chown=appuser:appuser /app/target/site /app/site
+COPY --from=builder --chown=appuser:appuser /app/Cargo.toml /app/
+
+ENV LEPTOS_OUTPUT_NAME="land"
+ENV LEPTOS_SITE_ROOT="/app/site"
+ENV LEPTOS_SITE_PKG_DIR="/app/site/pkg"
+ENV LEPTOS_SITE_ADDR="0.0.0.0:3000"
+ENV RUST_LOG="info"
+
+EXPOSE 3000
+
+CMD ["gosu", "appuser", "/app/land"]

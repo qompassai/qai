@@ -1,0 +1,11 @@
+/home/phaedrus/.GH/xet-core/target/release/deps/libasync_scoped-9580cae0f3398271.rmeta: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/utils.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/scoped.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/spawner.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/usage.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/libasync_scoped-9580cae0f3398271.rlib: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/utils.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/scoped.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/spawner.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/usage.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/async_scoped-9580cae0f3398271.d: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/utils.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/scoped.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/spawner.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/usage.rs
+
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/lib.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/utils.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/scoped.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/spawner.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/async-scoped-0.7.1/src/usage.rs:

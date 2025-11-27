@@ -1,0 +1,11 @@
+/home/phaedrus/.GH/xet-core/target/release/deps/libppv_lite86-d5ef0cdbc17c8c9d.rmeta: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/soft.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/types.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/sse2.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/libppv_lite86-d5ef0cdbc17c8c9d.rlib: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/soft.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/types.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/sse2.rs
+
+/home/phaedrus/.GH/xet-core/target/release/deps/ppv_lite86-d5ef0cdbc17c8c9d.d: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/soft.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/types.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/mod.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/sse2.rs
+
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/lib.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/soft.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/types.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/mod.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/ppv-lite86-0.2.21/src/x86_64/sse2.rs:

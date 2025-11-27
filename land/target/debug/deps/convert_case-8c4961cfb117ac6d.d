@@ -1,0 +1,11 @@
+/home/phaedrus/.GH/Qompass/qai/land/target/debug/deps/convert_case-8c4961cfb117ac6d.d: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/boundary.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/case.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/converter.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/pattern.rs
+
+/home/phaedrus/.GH/Qompass/qai/land/target/debug/deps/libconvert_case-8c4961cfb117ac6d.rlib: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/boundary.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/case.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/converter.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/pattern.rs
+
+/home/phaedrus/.GH/Qompass/qai/land/target/debug/deps/libconvert_case-8c4961cfb117ac6d.rmeta: /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/lib.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/boundary.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/case.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/converter.rs /home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/pattern.rs
+
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/lib.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/boundary.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/case.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/converter.rs:
+/home/phaedrus/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/convert_case-0.7.1/src/pattern.rs:
